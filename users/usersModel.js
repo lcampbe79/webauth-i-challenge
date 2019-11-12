@@ -14,12 +14,13 @@ function find() {
 
 function findBy(filter) {
   return db('users')
-    .where(filter);
+    .where(filter)
+    .first()
 }
 
 function findById(id) {
   return db('users')
-    .select('id', 'username')
+    // .select('id', 'username')
     .where({id})
     .first();
 }
@@ -32,3 +33,9 @@ function add (user) {
       return findById(id)
     });
 }
+
+// async function add(user) {
+//   const [id] = await db('users').insert(user);
+
+//   return findById(id);
+// }
